@@ -2,7 +2,7 @@
 authors = [{ name = "digital-idiot", email = "mail2abhisek.maiti@gmail.com" }]
 name = "SoilMatrix"
 requires-python = ">= 3.10"
-version = "1.0.alpha"
+version = "1.0.beta"
 description = "A package downloading data from SoilGrids API."
 readme = "README.md"
 classifiers = [
@@ -27,7 +27,7 @@ channels = ["conda-forge"]
 platforms = ["linux-64", "linux-aarch64", "osx-arm64", "osx-64", "win-64"]
 
 [tool.pixi.environments]
-default = ["dev", "test", "docs"]
+default = ["runtime", "build", "test", "docs"]
 
 [tool.pixi.environments.build]
 features = ["build"]
@@ -64,8 +64,19 @@ geopandas = ">=1.0.1,<2"
 rich = ">=14.0.0,<15"
 pixi-pycharm = ">=0.0.8,<0.0.9"
 ruff = ">=0.11.5,<0.12"
+pytest = ">=8.3.5,<9"
+sphinx = ">=8.2.3,<9"
+sphinx_rtd_theme = ">=3.0.1,<4"
+python-build = ">=1.2.2.post1,<2"
 
 [tool.pixi.feature.build.dependencies]
+numpy = ">=2.2.4,<3"
+rasterio = ">=1.4.3,<2"
+geopandas = ">=1.0.1,<2"
+rich = ">=14.0.0,<15"
+python-build = ">=1.2.2.post1,<2"
+
+[tool.pixi.feature.runtime.dependencies]
 numpy = ">=2.2.4,<3"
 rasterio = ">=1.4.3,<2"
 geopandas = ">=1.0.1,<2"

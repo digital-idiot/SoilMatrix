@@ -14,7 +14,8 @@ from rasterio.features import geometry_mask, geometry_window
 from rasterio.vrt import WarpedVRT
 from rasterio.windows import Window, subdivide
 
-from src.utils import ImmutableMeta, TaskProgress
+# noinspection PyUnresolvedReferences
+from soilmatrix.utils import ImmutableMeta, TaskProgress
 
 __all__ = ["SoilMatrix"]
 
