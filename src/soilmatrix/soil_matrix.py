@@ -673,7 +673,7 @@ class SoilMatrix(metaclass=ImmutableMeta):
             self,
             service_id: str,
             coverage_id: str,
-            aoi: gpd.GeoDataFrame | gpd.GeoSeries,
+            aoi: gpd.GeoDataFrame | gpd.GeoSeries | gpd.array.GeometryArray,
             dst_path: str | Path,
             convert: bool = False,
             *,
@@ -694,8 +694,8 @@ class SoilMatrix(metaclass=ImmutableMeta):
         Args:
             service_id (str): The identifier of the service.
             coverage_id (str): The identifier of the coverage.
-            aoi (gpd.GeoDataFrame | gpd.GeoSeries): Vector layer defining
-             the area of interest (AOI).
+            aoi (gpd.GeoDataFrame | gpd.GeoSeries | gpd.array.GeometryArray): A
+             vector layer defining the area of interest (AOI).
             dst_path (str | Path): The path to save the coverage to.
             convert (bool): If True, convert the data to the target unit.
             all_touched (bool): If True, include all pixels touched by the
@@ -734,7 +734,7 @@ class SoilMatrix(metaclass=ImmutableMeta):
                     coverage_id=coverage_id
 
                 )
-                pad = 0.5 if all_touched else 0
+                pad = (0.5 ** 0.5) if all_touched else 0
                 with rio.open(url, mode="r") as src_sink:
                     resampling = getattr(
                         Resampling,

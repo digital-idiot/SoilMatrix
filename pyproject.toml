@@ -12,6 +12,20 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 
+[tool.pixi.package]
+name = "soilmatrix"
+version = "1.0.beta"
+
+[tool.pixi.package.build]
+backend = { name = "pixi-build-python", version = "*" }
+channels = [
+  "https://prefix.dev/pixi-build-backends",
+  "https://prefix.dev/conda-forge",
+]
+
+[tool.pixi.package.host-dependencies]
+hatchling = "*"
+
 [tool.pixi.dependencies]
 numpy = ">=2.2.4,<3"
 rasterio = ">=1.4.3,<2"
@@ -24,6 +38,7 @@ requires = ["hatchling"]
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]
+preview = ["pixi-build"]
 platforms = ["linux-64", "linux-aarch64", "osx-arm64", "osx-64", "win-64"]
 
 [tool.pixi.environments]
@@ -90,3 +105,13 @@ select = ["E", "F", "W", "I", "N", "D", "UP", "B", "C4", "SIM", "RUF"]
 ignore = ["E501", "D203", "D212"]
 pydocstyle = { convention = "google" }
 per-file-ignores = { "__init__.py" = ["F401"], "tests/*" = ["D", "S101"], "examples/*" = ["D"] }
+
+[tool.pixi.feature.dev.tasks]
+fmt = "ruff format"
+lint = "ruff check"
+fix = "ruff check --fix"
+style = [{ task = "fmt" }, { task = "lint" }]
+
+[tool.pixi.feature.build.tasks]
+build = "python -m build"
+clean = "rm -rf build/ dist/ __pycache__/ .pytest_cache/ .ruff_cache/"
