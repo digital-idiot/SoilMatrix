@@ -1,8 +1,8 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+"""Configuration file for the Sphinx documentation builder.
 
+For the full list of built-in configuration values, see the documentation:
+https://www.sphinx-doc.org/en/master/usage/configuration.html
+"""
 import os
 import sys
 from pathlib import Path
@@ -26,7 +26,7 @@ package_root = Path(__file__).parents[2] / 'soilmatrix'
 # First try to get version from _version.py if it exists
 version_file = package_root / '_version.py'
 if version_file.exists():
-    with open(version_file, 'r') as f:
+    with open(version_file) as f:
         for line in f:
             if line.startswith('__version__'):
                 version = line.split('=')[1].strip().strip('"\'')
