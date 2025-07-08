@@ -1,0 +1,63 @@
+/* Custom CSS for SoilMatrix documentation */
+
+/* Header styling */
+.wy-side-nav-search {
+    background-color: #2980B9;
+}
+
+.wy-side-nav-search > div.version {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Code blocks */
+.highlight {
+    background: #f8f8f8;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+/* Tables */
+.wy-table-responsive table td, .wy-table-responsive table th {
+    white-space: normal;
+}
+
+/* Sidebar */
+.wy-nav-side {
+    background: #343131;
+}
+
+.wy-menu-vertical a {
+    color: #d9d9d9;
+}
+
+.wy-menu-vertical a:hover {
+    background-color: #404040;
+}
+
+/* Content area */
+.wy-nav-content {
+    max-width: 1000px;
+}
+
+/* Footer */
+.rst-footer-buttons {
+    padding: 1em 0;
+    border-top: 1px solid #e1e4e5;
+    margin-top: 2em;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .wy-nav-content-wrap {
+        margin-left: 0;
+    }
+    
+    .wy-nav-side {
+        left: -300px;
+    }
+    
+    .wy-nav-side.shift {
+        left: 0;
+    }
+}
